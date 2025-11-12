@@ -34,7 +34,7 @@ jobs:
       - name: Add CNAME for Custom Domain
         run: cp CNAME docs/.vuepress/dist/
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         uses: crazy-max/ghaction-github-pages@v4
         with:
           target_branch: builds

@@ -5,7 +5,7 @@ footer: Copyright © 2025-present r
 # 🔗 Links
 ---
 ## SNS系
-- Twitter: [@8r_5f](https://x.com/8r_5f)
+- Twitter: 自分で探せ
 - Discord: 4r64
 - Steam: [r492](https://steamcommunity.com/id/r492/)
 - Youtube: [る](https://www.youtube.com/channel/UCG2GxbbURHYCWacuywvjwqg)

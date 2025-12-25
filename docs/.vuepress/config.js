@@ -13,7 +13,7 @@ export default defineUserConfig({
     ],
   }),
   lang: 'ja-JP',
-  title: 'rさんのホームページ',
+  title: "r's homepage",
   description: '色々',
   
 })

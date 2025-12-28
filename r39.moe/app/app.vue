@@ -3,13 +3,94 @@
     <NuxtRouteAnnouncer />
     <NuxtLoadingIndicator color="var(--accent)" />
     <div class="backdrop" aria-hidden="true" />
+    <header class="site-header">
+      <div class="footer-inner">
+        <div class="footer-title">R's Homepage</div>
+        <nav class="footer-nav">
+          <NuxtLink to="/">home</NuxtLink>
+          <NuxtLink to="/blog">blog</NuxtLink>
+          <NuxtLink to="/links">links</NuxtLink>
+        </nav>
+        <button class="theme-toggle" type="button" @click="toggleTheme">
+          {{ isDark ? '☾' : '☼' }}
+        </button>
+      </div>
+    </header>
     <main class="page-shell">
       <NuxtPage />
     </main>
+    <footer class="site-footer">
+      <div class="header-inner">
+        <span class="copyright">Copyright © 2025-present r</span>
+      </div>
+    </footer>
   </div>
-</template>
+  </template>
+
+<script setup>
+const isDark = ref(true)
+
+const applyTheme = (theme) => {
+  if (process.client) {
+    document.documentElement.dataset.theme = theme
+    localStorage.setItem('theme', theme)
+  }
+}
+
+const toggleTheme = () => {
+  isDark.value = !isDark.value
+  applyTheme(isDark.value ? 'dark' : 'light')
+}
+
+onMounted(() => {
+  const stored = localStorage.getItem('theme')
+  const theme = stored === 'light' ? 'light' : 'dark'
+  isDark.value = theme === 'dark'
+  applyTheme(theme)
+})
+</script>
 
 <style>
+@font-face {
+  font-family: "Zen Maru Gothic";
+  src: url("/assets/fonts/ZenMaruGothic-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zen Maru Gothic";
+  src: url("/assets/fonts/ZenMaruGothic-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zen Maru Gothic";
+  src: url("/assets/fonts/ZenMaruGothic-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zen Maru Gothic";
+  src: url("/assets/fonts/ZenMaruGothic-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zen Maru Gothic";
+  src: url("/assets/fonts/ZenMaruGothic-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   color-scheme: dark;
   --bg: #0a0b10;
@@ -25,6 +106,20 @@
   --radius: 20px;
 }
 
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f3f4f8;
+  --bg-deep: #e6e9f2;
+  --panel: rgba(255, 255, 255, 0.78);
+  --panel-border: rgba(120, 130, 160, 0.24);
+  --text: #1d2130;
+  --muted: #5f6b7a;
+  --accent: #0f6c7a;
+  --accent-deep: #0a3f49;
+  --glow: rgba(15, 108, 122, 0.25);
+  --shadow: rgba(15, 20, 30, 0.18);
+}
+
 *,
 *::before,
 *::after {
@@ -35,9 +130,13 @@ body {
   margin: 0;
   background: radial-gradient(120% 120% at 10% 10%, #141825 0%, var(--bg) 55%, var(--bg-deep) 100%);
   color: var(--text);
-  font-family: "Space Grotesk", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+  font-family: "Zen Maru Gothic", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
   letter-spacing: 0.01em;
   min-height: 100vh;
+}
+
+[data-theme="light"] body {
+  background: radial-gradient(140% 140% at 10% 10%, #ffffff 0%, var(--bg) 55%, var(--bg-deep) 100%);
 }
 
 a {
@@ -74,7 +173,7 @@ a:focus-visible {
   z-index: 1;
   max-width: 920px;
   margin: 0 auto;
-  padding: 72px 24px 96px;
+  padding: 40px 24px 96px;
 }
 
 .content {
@@ -154,6 +253,108 @@ a:focus-visible {
   flex: 0 0 auto;
 }
 
+.list .link-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  margin: -10px -14px;
+  border-radius: 12px;
+}
+
+.list .link-row:focus-visible {
+  outline: 2px solid rgba(134, 242, 255, 0.6);
+  outline-offset: 2px;
+}
+
+.site-header,
+.site-footer {
+  position: relative;
+  z-index: 2;
+}
+
+.site-header {
+  padding: 28px 24px 16px;
+}
+
+.header-inner {
+  max-width: 920px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.site-footer {
+  padding: 24px 24px 64px;
+}
+
+.footer-inner {
+  max-width: 920px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: calc(var(--radius) + 4px);
+  padding: 18px 22px;
+  box-shadow: 0 18px 40px var(--shadow);
+}
+
+.footer-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 16px;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.footer-nav a {
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.footer-nav a:hover,
+.footer-nav a:focus-visible {
+  border-color: rgba(134, 242, 255, 0.4);
+  box-shadow: 0 0 14px rgba(134, 242, 255, 0.25);
+}
+
+.theme-toggle {
+  border: 1px solid rgba(134, 242, 255, 0.35);
+  background: rgba(134, 242, 255, 0.08);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+[data-theme="light"] .theme-toggle {
+  border-color: rgba(15, 108, 122, 0.3);
+  background: rgba(15, 108, 122, 0.08);
+}
+
 @media (max-width: 640px) {
   .page-shell {
     padding: 56px 18px 80px;
@@ -161,6 +362,19 @@ a:focus-visible {
 
   .card {
     padding: 20px;
+  }
+
+  .header-inner {
+    justify-content: flex-start;
+  }
+
+  .footer-inner {
+    align-items: flex-start;
+  }
+
+  .footer-nav {
+    flex-wrap: wrap;
+    gap: 10px;
   }
 }
 </style>

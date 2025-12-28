@@ -10,20 +10,16 @@
           <li>Twitter: 自分で探せ</li>
           <li>Discord: 4r64</li>
           <li>
-            Steam:
-            <a href="https://steamcommunity.com/id/r492/" rel="noreferrer" target="_blank">r492</a>
+            <a class="link-row" href="https://steamcommunity.com/id/r492/" rel="noreferrer" target="_blank">Steam: r492</a>
           </li>
           <li>
-            Youtube:
-            <a href="https://www.youtube.com/channel/UCG2GxbbURHYCWacuywvjwqg" rel="noreferrer" target="_blank">る</a>
+            <a class="link-row" href="https://www.youtube.com/channel/UCG2GxbbURHYCWacuywvjwqg" rel="noreferrer" target="_blank">Youtube: る</a>
           </li>
           <li>
-            Github:
-            <a href="https://github.com/25c2" rel="noreferrer" target="_blank">25c2</a>
+            <a class="link-row" href="https://github.com/25c2" rel="noreferrer" target="_blank">Github: 25c2</a>
           </li>
           <li>
-            Twitch:
-            <a href="https://www.twitch.tv/r492" rel="noreferrer" target="_blank">r492</a>
+            <a class="link-row" href="https://www.twitch.tv/r492" rel="noreferrer" target="_blank">Twitch: r492</a>
           </li>
         </ul>
       </div>

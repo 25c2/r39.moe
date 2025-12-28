@@ -274,6 +274,29 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.tag-button {
+  border: 1px solid var(--panel-border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.tag-button.is-active {
+  border-color: rgba(134, 242, 255, 0.5);
+  box-shadow: 0 0 14px rgba(134, 242, 255, 0.18);
+}
+
 .site-header,
 .site-footer {
   position: relative;

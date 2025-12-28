@@ -100,6 +100,15 @@ onMounted(() => {
   --card: linear-gradient(140deg, rgba(18, 22, 34, 0.9), rgba(10, 12, 20, 0.85));
   --list-item: rgba(255, 255, 255, 0.03);
   --list-item-border: rgba(255, 255, 255, 0.05);
+  --callout-info-bg: rgba(120, 220, 140, 0.12);
+  --callout-info-border: rgba(120, 220, 140, 0.35);
+  --callout-info-icon: #7dd38a;
+  --callout-warn-bg: rgba(255, 210, 120, 0.12);
+  --callout-warn-border: rgba(255, 210, 120, 0.4);
+  --callout-warn-icon: #f0c15d;
+  --callout-error-bg: rgba(255, 130, 130, 0.12);
+  --callout-error-border: rgba(255, 130, 130, 0.4);
+  --callout-error-icon: #f07c7c;
   --text: #e8e9f0;
   --muted: #9aa3b2;
   --accent: #86f2ff;
@@ -118,6 +127,15 @@ onMounted(() => {
   --card: linear-gradient(140deg, rgba(255, 255, 255, 0.9), rgba(240, 244, 252, 0.95));
   --list-item: rgba(15, 20, 30, 0.05);
   --list-item-border: rgba(15, 20, 30, 0.08);
+  --callout-info-bg: rgba(180, 235, 190, 0.6);
+  --callout-info-border: rgba(120, 200, 140, 0.7);
+  --callout-info-icon: #2f7a3d;
+  --callout-warn-bg: rgba(255, 235, 170, 0.6);
+  --callout-warn-border: rgba(235, 190, 80, 0.7);
+  --callout-warn-icon: #9b7300;
+  --callout-error-bg: rgba(255, 210, 210, 0.6);
+  --callout-error-border: rgba(235, 140, 140, 0.7);
+  --callout-error-icon: #b03131;
   --text: #1d2130;
   --muted: #5f6b7a;
   --accent: #0f6c7a;
@@ -295,6 +313,84 @@ a:focus-visible {
 .tag-button.is-active {
   border-color: rgba(134, 242, 255, 0.5);
   box-shadow: 0 0 14px rgba(134, 242, 255, 0.18);
+}
+
+.month-group {
+  display: grid;
+  gap: 12px;
+}
+
+.month-group + .month-group {
+  margin-top: 20px;
+}
+
+.month-title {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+}
+
+.callout {
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.callout + .callout {
+  margin-top: 16px;
+}
+
+.callout-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.callout-icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+
+.callout-body :first-child {
+  margin-top: 0;
+}
+
+.callout-body :last-child {
+  margin-bottom: 0;
+}
+
+.callout-info {
+  background: var(--callout-info-bg);
+  border-color: var(--callout-info-border);
+}
+
+.callout-info .callout-icon {
+  background: var(--callout-info-icon);
+}
+
+.callout-warn {
+  background: var(--callout-warn-bg);
+  border-color: var(--callout-warn-border);
+}
+
+.callout-warn .callout-icon {
+  background: var(--callout-warn-icon);
+}
+
+.callout-error {
+  background: var(--callout-error-bg);
+  border-color: var(--callout-error-border);
+}
+
+.callout-error .callout-icon {
+  background: var(--callout-error-icon);
 }
 
 .site-header,

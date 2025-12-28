@@ -22,4 +22,12 @@ const { data: post } = await useAsyncData(
   () => `blog:${slug.value}`,
   () => queryCollection('blog').path(`/blog/${slug.value}`).first()
 )
+
+const pageTitle = computed(() =>
+  post.value?.title ? `${post.value.title} | R's Homepage` : "R's Homepage"
+)
+
+useHead(() => ({
+  title: pageTitle.value
+}))
 </script>

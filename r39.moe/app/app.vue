@@ -444,6 +444,7 @@ a:focus-visible {
 
 .footer-nav {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
   font-size: 0.95rem;
   text-transform: uppercase;
@@ -489,17 +490,18 @@ a:focus-visible {
     padding: 20px;
   }
 
-  .header-inner {
-    justify-content: flex-start;
-  }
-
   .footer-inner {
     align-items: flex-start;
+    justify-content: flex-start;
   }
 
   .footer-nav {
     flex-wrap: wrap;
     gap: 10px;
+  }
+
+  .theme-toggle {
+    margin-left: auto;
   }
 }
 </style>

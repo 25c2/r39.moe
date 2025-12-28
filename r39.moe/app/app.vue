@@ -97,6 +97,9 @@ onMounted(() => {
   --bg-deep: #05060a;
   --panel: rgba(20, 24, 34, 0.78);
   --panel-border: rgba(120, 130, 160, 0.24);
+  --card: linear-gradient(140deg, rgba(18, 22, 34, 0.9), rgba(10, 12, 20, 0.85));
+  --list-item: rgba(255, 255, 255, 0.03);
+  --list-item-border: rgba(255, 255, 255, 0.05);
   --text: #e8e9f0;
   --muted: #9aa3b2;
   --accent: #86f2ff;
@@ -112,6 +115,9 @@ onMounted(() => {
   --bg-deep: #e6e9f2;
   --panel: rgba(255, 255, 255, 0.78);
   --panel-border: rgba(120, 130, 160, 0.24);
+  --card: linear-gradient(140deg, rgba(255, 255, 255, 0.9), rgba(240, 244, 252, 0.95));
+  --list-item: rgba(15, 20, 30, 0.05);
+  --list-item-border: rgba(15, 20, 30, 0.08);
   --text: #1d2130;
   --muted: #5f6b7a;
   --accent: #0f6c7a;
@@ -210,7 +216,7 @@ a:focus-visible {
 }
 
 .card {
-  background: linear-gradient(140deg, rgba(18, 22, 34, 0.9), rgba(10, 12, 20, 0.85));
+  background: var(--card);
   border: 1px solid var(--panel-border);
   border-radius: var(--radius);
   padding: 24px 28px;
@@ -235,8 +241,8 @@ a:focus-visible {
 .list li {
   padding: 10px 14px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--list-item);
+  border: 1px solid var(--list-item-border);
   display: flex;
   align-items: center;
   gap: 12px;

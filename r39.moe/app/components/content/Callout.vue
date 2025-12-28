@@ -43,6 +43,6 @@ const displayTitle = computed(() => {
   if (normalizedType.value === 'error') {
     return '警告'
   }
-  return '情報'
+  return 'ヒント'
 })
 </script>

@@ -1,0 +1,41 @@
+name: Build and publish
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: r39.moe/package-lock.json
+
+      - name: Install
+        run: npm ci
+        working-directory: r39.moe
+
+      - name: Generate
+        run: npm run generate
+        working-directory: r39.moe
+
+      - name: Publish to builds
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: builds
+          publish_dir: r39.moe/.output/public

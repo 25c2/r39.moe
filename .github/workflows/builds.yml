@@ -23,21 +23,21 @@ jobs:
         with:
           node-version: 24
           cache: npm
-          cache-dependency-path: r39.moe/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install
         run: npm ci
-        working-directory: r39.moe
+        working-directory: /
 
       - name: Generate
         run: npm run generate
-        working-directory: r39.moe
+        working-directory: /
 
       - name: Publish to builds
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: builds
-          publish_dir: r39.moe/.output/public
+          publish_dir: .output/public
           user_name: github-actions[bot]
           user_email: github-actions[bot]@users.noreply.github.com

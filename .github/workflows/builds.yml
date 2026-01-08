@@ -34,11 +34,11 @@ jobs:
             echo "package-lock.json not found — running npm install"
             npm install
           fi
-        working-directory: /
+        working-directory: .
 
       - name: Generate
         run: npm run generate
-        working-directory: /
+        working-directory: .
 
       - name: Publish to builds
         uses: peaceiris/actions-gh-pages@v4

@@ -17,6 +17,8 @@ logs
 .DS_Store
 .fleet
 .idea
+pnpm-lock.yaml
+pnpm-workspace.yaml
 
 # Local env files
 .env

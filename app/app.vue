@@ -109,6 +109,10 @@ onMounted(() => {
   --callout-error-bg: rgba(255, 130, 130, 0.12);
   --callout-error-border: rgba(255, 130, 130, 0.4);
   --callout-error-icon: #f07c7c;
+  --fold-bg: rgba(255, 255, 255, 0.03);
+  --fold-border: rgba(134, 242, 255, 0.18);
+  --fold-open-bg: rgba(134, 242, 255, 0.08);
+  --fold-open-border: rgba(134, 242, 255, 0.35);
   --text: #e8e9f0;
   --muted: #9aa3b2;
   --accent: #86f2ff;
@@ -136,6 +140,10 @@ onMounted(() => {
   --callout-error-bg: rgba(255, 210, 210, 0.6);
   --callout-error-border: rgba(235, 140, 140, 0.7);
   --callout-error-icon: #b03131;
+  --fold-bg: rgba(15, 20, 30, 0.04);
+  --fold-border: rgba(15, 108, 122, 0.2);
+  --fold-open-bg: rgba(15, 108, 122, 0.08);
+  --fold-open-border: rgba(15, 108, 122, 0.34);
   --text: #1d2130;
   --muted: #5f6b7a;
   --accent: #0f6c7a;
@@ -338,7 +346,10 @@ a:focus-visible {
   background: rgba(255, 255, 255, 0.02);
 }
 
-.callout + .callout {
+.callout + .callout,
+.callout + .fold,
+.fold + .callout,
+.fold + .fold {
   margin-top: 16px;
 }
 
@@ -391,6 +402,63 @@ a:focus-visible {
 
 .callout-error .callout-icon {
   background: var(--callout-error-icon);
+}
+
+.fold {
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 1px solid var(--fold-border);
+  background: var(--fold-bg);
+}
+
+.fold[open] {
+  background: var(--fold-open-bg);
+  border-color: var(--fold-open-border);
+}
+
+.fold-summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+}
+
+.fold-summary::-webkit-details-marker {
+  display: none;
+}
+
+.fold-summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+
+.fold-chevron {
+  width: 10px;
+  height: 10px;
+  flex: 0 0 auto;
+  border-right: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  transform: rotate(-45deg);
+  transition: transform 0.18s ease;
+}
+
+.fold[open] .fold-chevron {
+  transform: rotate(45deg);
+}
+
+.fold-body {
+  padding-top: 10px;
+}
+
+.fold-body :first-child {
+  margin-top: 0;
+}
+
+.fold-body :last-child {
+  margin-bottom: 0;
 }
 
 .site-header,

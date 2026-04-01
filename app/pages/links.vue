@@ -24,15 +24,6 @@
         </ul>
       </div>
     </section>
-    <section class="block">
-      <h2 class="subtitle">ゲーム系</h2>
-      <div class="card">
-        <ul class="list">
-          <li>ユメステ: 5447666231</li>
-          <li>プロセカ: 544418034309853199</li>
-        </ul>
-      </div>
-    </section>
   </section>
 </template>
 
